@@ -134,11 +134,11 @@
         }
 
         function generateGroups(names) {
-            const shuffledNames = names.sort(() => Math.random() - 0.5);
+            const sortedNames = names.sort((a, b) => playerStats[a] - playerStats[b]);
             const groups = [[], [], [], []];
             for (let i = 0; i < 16; i++) {
-                groups[i % 4].push(shuffledNames[i]);
-                playerStats[shuffledNames[i]]++;
+                groups[i % 4].push(sortedNames[i]);
+                playerStats[sortedNames[i]]++;
             }
             groupSets.push(groups);
             displayGroups(groups);
